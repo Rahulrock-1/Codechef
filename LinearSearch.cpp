@@ -18,11 +18,12 @@ int main()
     int n;
     cin>>n;
     int arr[n];
-    int key;
-    cin>>key;
+   
     for(int i = 0; i<n; i++)
     {
         cin>>arr[i];
     }
-    cout<<search(n, arr, key);
+    int key;
+    cin>>key;
+    cout<<search(n, arr, key)<<endl;
 }
