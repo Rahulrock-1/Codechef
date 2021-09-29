@@ -88,6 +88,22 @@ bool search(node* head, int key)
     return false;
 }
 
+// node* reverse(node* &head)
+// {
+//     node*  preptr=NULL;
+//     node* curptr = head;
+//     node* nextptr;
+//     while(curptr !=NULL)
+//     {
+//         nextptr = curptr->next;
+//         curptr->next = preptr;
+//         preptr = curptr;
+//         curptr = nextptr;
+//     }
+//     return preptr;
+// }
+
+
 int main()
 {
     node* head = NULL;
@@ -97,8 +113,10 @@ int main()
     // display(head);
     insertAthead(head,4);
     display(head);
-    // cout<<search(head,3)<<endl;
-    // deletion(head, 3);
+    // node* newhead = reverse(head);
+    // display(newhead);
+    cout<<search(head,3)<<endl;
+    deletion(head, 3);
     deleteAthead(head);
     display(head);
 }
