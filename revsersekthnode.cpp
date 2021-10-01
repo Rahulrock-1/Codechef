@@ -1,8 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-class node
-{
+class node{
     public:
         int data;
         node* next;
@@ -13,7 +12,6 @@ class node
             next = NULL;
         }
 };
-
 void insertAthead(node* &head, int val)
 {
     node* n = new node(val);
@@ -25,66 +23,61 @@ void insertAttail(node* &head, int val)
 {
     node* n = new node(val);
     if(head == NULL)
-    { 
+    {
         head = n;
         return;
     }
     node* temp = head;
-    while(temp ->next !=NULL)
+    while(temp->next != NULL)
     {
         temp = temp->next;
     }
     temp->next = n;
 }
+
 void display(node* head)
 {
     node* temp = head;
-    while(temp != NULL)
+    while(temp !=NULL)
     {
         cout<<temp->data<<"->";
-        temp= temp->next;
+        temp = temp->next;
     }
     cout<<"NULL"<<endl;
 }
 
-node* reverse(node* &head)
-{
-    node*  preptr=NULL;
+node* reversekth(node* &head, int k)
+{ 
+    node* preptr = NULL;
     node* curptr = head;
     node* nextptr;
-    while(curptr !=NULL)
+    int count = 0;
+    while(curptr !=NULL && count<k)
     {
         nextptr = curptr->next;
         curptr->next = preptr;
         preptr = curptr;
         curptr = nextptr;
+        count++;
+    }
+    if(nextptr !=NULL)
+    {
+        head->next=reversekth(nextptr,k);
     }
     return preptr;
 }
 
-node* reverseRcursive(node* &head)
-{
-
-    if(head==NULL || head->next==NULL)
-        return head;
-
-    node* newhead = reverseRcursive(head->next);
-    head->next->next=head;
-    head->next=NULL;
-    return newhead;
-}
-
-
 int main()
 {
-    node* head = NULL;
-    insertAttail(head,1);
+    node* head=NULL;
+    insertAttail(head,1); 
     insertAttail(head,2);
     insertAttail(head,3);
-    // display(head);
     insertAttail(head,4);
+    insertAttail(head,5);
+    insertAttail(head,6);
     display(head);
-    node* newhead = reverseRcursive(head);
+    int k =3;
+    node* newhead = reversekth(head, k);
     display(newhead);
 }
-
