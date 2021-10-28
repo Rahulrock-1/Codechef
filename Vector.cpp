@@ -18,7 +18,7 @@ int main()
 
     v.pop_back();
 
-    int k = (int)v.size();
+    int k = v.size();
 
 
     for(int i = 0; i<k; i++)
